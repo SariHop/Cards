@@ -11,7 +11,7 @@ function App() {
         alignItems="center"
         justifyContent="center"
        >
-        <CardArray></CardArray>
+        <CardArray/>
       </Grid>
 
     </div>

@@ -3,8 +3,6 @@ import { useEffect, useState, createContext } from 'react'
 import axios from 'axios'
 import Card from './Card'
 import AddCard from './API components/AddCard'
-import Grid from '@mui/material/Grid2';
-import { styled } from '@mui/material/styles';
 
 export const SetArraycardsContext = createContext()
 
@@ -32,7 +30,7 @@ const CardArray = () => {
                 {cardsArray.map((card) => {
                     return <Card card={card} key={card.id}> </Card>
                 })}
-                <AddCard></AddCard>
+                <AddCard/>
             </SetArraycardsContext.Provider >
         </>
     )
