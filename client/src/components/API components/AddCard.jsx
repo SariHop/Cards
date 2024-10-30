@@ -1,25 +1,41 @@
 import React from 'react'
+import { useContext } from 'react'
+import {SetArraycardsContext} from '../CardArray'
 import axios from 'axios'
+import { arrayColors } from '../ColorPicker'
 
 const AddCard = () => {
 
-  const newCard = {
-    "text": "New Card",
-    "color": "green"
-  }
-  // צבע רנדומלי מרשימת הצבעים
+  const setColorArray = useContext(SetArraycardsContext);
 
-  const fetchCreate = async () => {
+  const newCard = () => {
+    const randomIndex = Math.floor(Math.random() * arrayColors.length);
+    return {
+      "text": "New Card",
+      "color": arrayColors[randomIndex]
+    }
+  }
+
+  const fetchCreate = async (card) => {
     try {
-      await axios.post('http://localhost:8080/cards/create', newCard)
+      const res = await axios.post('http://localhost:8080/cards/create', card)
+      return res.data
     } catch (error) {
       console.error(error.message)
     }
-    //עדכון מערך הכרטיסים בריאקט
   }
+
+  const handleClick = async () => {
+    const card = newCard()
+    const resNewcard = await fetchCreate(card)
+    debugger
+    setColorArray((prevArray) => [...prevArray, resNewcard]);
+    console.log("response")
+  }
+
   return (
     <div style={{ height: '200px', width: '350px' }}>
-      <button onClick={fetchCreate}>+</button>
+      <button onClick={handleClick}>+</button>
     </div>
   )
 }

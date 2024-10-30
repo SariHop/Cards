@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,createContext } from 'react'
 import axios from 'axios'
 import Card from './Card'
 import AddCard from './API components/AddCard'
+
+export const SetArraycardsContext = createContext()
 
 const CardArray = () => {
 
@@ -13,6 +15,7 @@ const CardArray = () => {
             try {
                 const response = await axios.get('http://localhost:8080/cards')
                 setCardsArray(response.data)
+                console.log(response.data)
             } catch (error) {
                 console.error(error.message)
             }
@@ -22,11 +25,13 @@ const CardArray = () => {
 
     return (
         <>
+        <SetArraycardsContext.Provider value={setCardsArray}>
             {/* Grid cell */}
             {cardsArray.map((card) => {
                 return <Card card={card} key={card.id}> </Card>
             })}
             <AddCard></AddCard>
+        </SetArraycardsContext.Provider >
         </>
     )
 }

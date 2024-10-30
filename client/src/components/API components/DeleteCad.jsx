@@ -1,11 +1,13 @@
 import React from 'react'
 import { useContext } from 'react'
+import { SetArraycardsContext } from '../CardArray'
 import axios from 'axios';
 import { CardContext } from '../Card';
 
 const DeleteCad = () => {
 
   const currentCard = useContext(CardContext);
+  const setColorArray = useContext(SetArraycardsContext);
 
   const fetchDelete = () => {
     try {
@@ -13,12 +15,15 @@ const DeleteCad = () => {
     } catch (error) {
       console.error(error.message)
     }
+  }
 
-    //עדכון מערך הכרטיסים בריאקט
+  const handleClick =()=>{
+    fetchDelete()
+    setColorArray((prevArray) => prevArray.filter(card => card !== currentCard));
   }
   return (
     <div>
-      <button onClick={fetchDelete}>delete</button>
+      <button onClick={handleClick}>delete</button>
     </div>
   )
 }
