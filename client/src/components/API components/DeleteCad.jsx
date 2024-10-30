@@ -3,6 +3,9 @@ import { useContext } from 'react'
 import { SetArraycardsContext } from '../CardArray'
 import axios from 'axios';
 import { CardContext } from '../Card';
+import { IconButton } from '@mui/material';
+import { IoTrash } from "react-icons/io5";
+
 
 const DeleteCad = () => {
 
@@ -24,7 +27,10 @@ const DeleteCad = () => {
 
   return (
     <div>
-      <button onClick={handleClick}>delete</button>
+      <IconButton onClick={handleClick}
+      color='white'>
+        <IoTrash style={{ color: 'white' }}/>
+      </IconButton>
     </div>
   )
 }

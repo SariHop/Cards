@@ -3,6 +3,8 @@ import { useContext } from 'react'
 import axios from 'axios'
 import { SetArraycardsContext } from '../CardArray'
 import { arrayColors } from '../ColorPicker'
+import { FaPlus } from "react-icons/fa";
+import { IconButton } from '@mui/material'
 
 const AddCard = () => {
 
@@ -32,9 +34,9 @@ const AddCard = () => {
   }
 
   return (
-    <div style={{ height: '200px', width: '350px' }}>
-      <button onClick={handleClick}>+</button>
-    </div>
+      <IconButton onClick={handleClick}>
+        <FaPlus style={{ color: 'white' }}></FaPlus>
+      </IconButton>
   )
 }
 

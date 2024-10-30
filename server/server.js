@@ -59,7 +59,6 @@ app.put('/cards/updateColor/:id', (req, res) => {
     if (index == -1) { return res.status(404).json({ 'message': 'card not found' });}
 
     const color = req.body.color
-    if(!color) { return res.status(404).json({ 'message': 'no color provide' });}
     cardsArray[index].color = color
     res.status(200).json(cardsArray[index]);
 
@@ -67,14 +66,13 @@ app.put('/cards/updateColor/:id', (req, res) => {
 
 // update text by id
 app.put('/cards/updateText/:id', (req, res) => {
-    // console.log("update text")
+    console.log("update text")
 
     const id = req.params.id
     const index = cardsArray.findIndex((card) => card.id == id);
     if (index == -1) { return res.status(404).json({ 'message': 'card not found' });}
 
     const text = req.body.text
-    if(!text) { return res.status(404).json({ 'message': 'no text provide' });}
     cardsArray[index].text = text
     res.status(200).json(cardsArray[index]);
 

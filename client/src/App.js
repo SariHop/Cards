@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Grid 
-        container spacing={2} 
+        container spacing={5} 
         alignItems="center"
         justifyContent="center"
        >
