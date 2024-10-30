@@ -1,4 +1,5 @@
-import React, { useEffect, useState,createContext } from 'react'
+import React from 'react'
+import { useEffect, useState, createContext } from 'react'
 import axios from 'axios'
 import Card from './Card'
 import AddCard from './API components/AddCard'
@@ -15,23 +16,23 @@ const CardArray = () => {
             try {
                 const response = await axios.get('http://localhost:8080/cards')
                 setCardsArray(response.data)
-                console.log(response.data)
             } catch (error) {
                 console.error(error.message)
             }
         }
         fetchcards()
+
     }, [])
 
     return (
         <>
-        <SetArraycardsContext.Provider value={setCardsArray}>
-            {/* Grid cell */}
-            {cardsArray.map((card) => {
-                return <Card card={card} key={card.id}> </Card>
-            })}
-            <AddCard></AddCard>
-        </SetArraycardsContext.Provider >
+            <SetArraycardsContext.Provider value={setCardsArray}>
+                {/* Grid cell */}
+                {cardsArray.map((card) => {
+                    return <Card card={card} key={card.id}> </Card>
+                })}
+                <AddCard></AddCard>
+            </SetArraycardsContext.Provider >
         </>
     )
 }

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useContext } from 'react'
+import React from 'react'
+import { useState, useContext } from 'react'
 import axios from 'axios';
 import { CardContext } from '../Card';
 

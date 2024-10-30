@@ -6,8 +6,8 @@ app.use(express.json());
 app.use(cors())
 
 let cardsArray = [
-    { id: 1, color: "#FF0000", text: "hello world text RED" },
-    { id: 2, color: "#0000FF", text: "hello world text BLUE" },
+    { id: 1, color: "#e000dc", text: "hello world text RED" },
+    { id: 2, color: "#00d6bd", text: "hello world text BLUE" },
 ]
 let uniqueId = cardsArray.length
 

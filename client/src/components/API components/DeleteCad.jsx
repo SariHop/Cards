@@ -17,10 +17,11 @@ const DeleteCad = () => {
     }
   }
 
-  const handleClick =()=>{
+  const handleClick = () => {
     fetchDelete()
     setColorArray((prevArray) => prevArray.filter(card => card !== currentCard));
   }
+
   return (
     <div>
       <button onClick={handleClick}>delete</button>

@@ -19,10 +19,10 @@ const UpdateColor = ({ color, SetToggle }) => {
 
     const handleClick = () => {
         fetchUpdateColor()
-        setColorArray(prevArray => prevArray.map(card => 
+        setColorArray(prevArray => prevArray.map(card =>
             card === currentCard ? { ...card, color: color } : card
-          ));
-         SetToggle(false)
+        ));
+        SetToggle(false)
     }
 
     return (

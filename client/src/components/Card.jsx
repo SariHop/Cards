@@ -15,15 +15,15 @@ const Card = ({ card }) => {
 
       <div style={{ height: '200px', width: '350px', backgroundColor: `${card.color}`, margin: 0 }}>
         <UpdateText></UpdateText>
+
         {toggleColorPicker ?
           <ColorPicker SetToggle={SetToggleColorPicker}></ColorPicker>
-          : 
+          :
           <>
             <DeleteCad></DeleteCad>
-            <button onClick={()=>{SetToggleColorPicker(true)}}>circler icon</button>
+            <button onClick={() => { SetToggleColorPicker(true) }}>circler icon</button>
           </>
         }
-        
       </div>
 
     </CardContext.Provider>
