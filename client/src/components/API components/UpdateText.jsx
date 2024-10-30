@@ -2,18 +2,7 @@ import React from 'react'
 import { useState, useContext } from 'react'
 import axios from 'axios';
 import { CardContext } from '../Card';
-import { styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-
-const StyledInput = styled(InputBase)(() => ({
-    '& .MuiInputBase-input': {
-      border: 'none',
-      background: 'transparent',
-      color: 'white',
-      textAlign: 'center',
-      fontSize: '25px',
-    },
-  }));
+import {StyledInput} from '../customComponents/textUpdateCustom'
 
 const UpdateText = () => {
 

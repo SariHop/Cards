@@ -2,7 +2,6 @@ import React from 'react'
 import UpdateColor from './API components/UpdateColor'
 
 export const arrayColors = ["#00d6bd", "#e000dc", "#00d4e8", "#9000d8"]
-// איפה יותר מדויק לשמור את מערך הצבעים
 
 const ColorPicker = ({ SetToggle }) => {
 
