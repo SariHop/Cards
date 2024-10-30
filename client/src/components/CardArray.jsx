@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Card from './Card'
+import AddCard from './API components/AddCard'
 
 const CardArray = () => {
 
-    const [cardsArray, setCardsArray] = useState([{},{}])
+    const [cardsArray, setCardsArray] = useState([])
 
     useEffect(() => {
 
         const fetchcards = async () => {
-            const response = await axios.get('http://localhost:8080/cards')
-            console.log(response.data)
-            setCardsArray(response.data)
+            try {
+                const response = await axios.get('http://localhost:8080/cards')
+                setCardsArray(response.data)
+            } catch (error) {
+                console.error(error.message)
+            }
         }
-
         fetchcards()
     }, [])
 
     return (
         <>
-       
-        <ul>
-            { cardsArray.map((card)=>{
-                return <li key={card.id}>
-                    
-                    {card.text}
-                    {card.color}
-                </li>
+            {/* Grid cell */}
+            {cardsArray.map((card) => {
+                return <Card card={card} key={card.id}> </Card>
             })}
-        </ul>
+            <AddCard></AddCard>
         </>
     )
 }
