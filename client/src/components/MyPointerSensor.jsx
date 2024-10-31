@@ -1,44 +1,46 @@
-import {PointerSensor,} from '@dnd-kit/core'
+import { PointerSensor, TouchSensor } from '@dnd-kit/core';
 
-export default class MyPointerSensor extends PointerSensor {
-  
-    static activators = [
-      {
-        eventName: 'onPointerDown',
-        handler: ({nativeEvent: event}) => {
-          if (
-            !event.isPrimary ||
-            event.button !== 0 ||
-            isInteractiveElement(event.target)
-          ) {
-            return false;
-          }
-  
-          return true;
-        },
+export default class MySensor extends PointerSensor {
+  static activators = [
+    {
+      eventName: 'onPointerDown',
+      handler: ({ nativeEvent: event }) => {
+        if (
+          !event.isPrimary ||
+          event.button !== 0 ||
+          isInteractiveElement(event.target)
+        ) {
+          return false;
+        }
+
+        return true;
       },
-    ];
-  }
- 
-  
-  function isInteractiveElement(element) {
-    // debugger
-    // console.log(element.tagName.toLowerCase())
-    const interactiveElements = [
-      'button',
-      'input',
-      'textarea',
-      'select',
-      'option',
-      'svg',
-      'path'
-    ];
+    },
+    {
+      eventName: 'onTouchStart',
+      handler: ({ nativeEvent: event }) => {
+        if (
+          !isInteractiveElement(event.target)
+        ) {
+          return true; // Allow touch events for non-interactive elements
+        }
 
-    if (interactiveElements.includes(element.tagName.toLowerCase())) {
-      return true;
-    }
-  
-    return false;
-  }
+        return false; // Prevent touch events for interactive elements
+      },
+    },
+  ];
+}
 
-  // https://github.com/clauderic/dnd-kit/issues/477
+function isInteractiveElement(element) {
+  const interactiveElements = [
+    'button',
+    'input',
+    'textarea',
+    'select',
+    'option',
+    'svg',
+    'path',
+  ];
+
+  return interactiveElements.includes(element.tagName.toLowerCase());
+}

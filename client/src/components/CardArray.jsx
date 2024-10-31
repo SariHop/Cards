@@ -15,7 +15,7 @@ import {
     SortableContext,
     rectSortingStrategy,
 } from '@dnd-kit/sortable';
-import MyPointerSensor from './MyPointerSensor'
+import MySensor from './MyPointerSensor'
 
 export const SetArraycardsContext = createContext()
 
@@ -23,8 +23,7 @@ const CardArray = () => {
 
     const [cardsArray, setCardsArray] = useState([])
     const sensors = useSensors(
-        useSensor(MyPointerSensor),
-        useSensor(TouchSensor)
+        useSensor(MySensor),
     );
 
     useEffect(() => {
