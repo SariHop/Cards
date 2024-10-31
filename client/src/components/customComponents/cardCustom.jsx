@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
-import IconButton from '@mui/material/IconButton';
 
 export const CardContainer = styled(Grid)({
     height: '200px',

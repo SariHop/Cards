@@ -1,6 +1,6 @@
 import { PointerSensor, TouchSensor } from '@dnd-kit/core';
 
-export default class MySensor extends PointerSensor {
+export class MyPointerSensor extends PointerSensor {
   static activators = [
     {
       eventName: 'onPointerDown',
@@ -12,32 +12,30 @@ export default class MySensor extends PointerSensor {
         ) {
           return false;
         }
-
         return true;
-      },
-    },
+      }
+    }];
+}
+
+
+export class MyTouchSensor extends TouchSensor {
+  static activators = [
     {
       eventName: 'onTouchStart',
       handler: ({ nativeEvent: event }) => {
-        if (
-          !isInteractiveElement(event.target)
-        ) {
-          return true; // Allow touch events for non-interactive elements
+        if (isInteractiveElement(event.target)) {
+          return false;
         }
-
-        return false; // Prevent touch events for interactive elements
-      },
-    },
-  ];
+        return true;
+      }
+    }]
 }
+
 
 function isInteractiveElement(element) {
   const interactiveElements = [
     'button',
     'input',
-    'textarea',
-    'select',
-    'option',
     'svg',
     'path',
   ];

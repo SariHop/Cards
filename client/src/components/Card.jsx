@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import { FaRegCircle } from "react-icons/fa";
 import ColorPicker from './ColorPicker';
 import UpdateText from './API components/UpdateText';
-import DeleteCad from './API components/DeleteCad';
+import DeleteCard from './API components/DeleteCrad';
 import { CardContainer, CardContent, CardFooter } from './customComponents/cardCustom'
 import { useSortable } from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
@@ -14,13 +14,11 @@ export const CardContext = createContext();
 
 const Card = ({ card }) => {
   const [toggleColorPicker, SetToggleColorPicker] = useState(false);
-  const id = card.id //state
 
   const sortable = useSortable({ id: card.id })
   const {
     attributes,
     listeners,
-    isDragging,
     setNodeRef,
     transform,
     transition,
@@ -52,7 +50,7 @@ const Card = ({ card }) => {
                 >
                   <FaRegCircle />
                 </IconButton>
-                <DeleteCad />
+                <DeleteCard />
               </>
 
             )}

@@ -3,9 +3,9 @@ import { useEffect, useState, createContext } from 'react'
 import axios from 'axios'
 import Card from './Card'
 import AddCard from './API components/AddCard'
-import {useSensors,useSensor,closestCorners,DndContext,} from '@dnd-kit/core'
-import {arrayMove,SortableContext, rectSortingStrategy,} from '@dnd-kit/sortable';
-import MySensor from './MyPointerSensor'
+import { useSensors, useSensor, closestCorners, DndContext, } from '@dnd-kit/core'
+import { arrayMove, SortableContext, rectSortingStrategy, } from '@dnd-kit/sortable';
+import { MyTouchSensor, MyPointerSensor } from './MyPointerSensor'
 
 export const SetArraycardsContext = createContext()
 
@@ -13,7 +13,8 @@ const CardArray = () => {
 
     const [cardsArray, setCardsArray] = useState([])
     const sensors = useSensors(
-        useSensor(MySensor),
+        useSensor(MyTouchSensor),
+        useSensor(MyPointerSensor),
     );
 
     useEffect(() => {
@@ -32,7 +33,7 @@ const CardArray = () => {
     const fetupdateCardsArray = async (cardsArray) => {
         try {
             await axios.put('http://localhost:8080/cards/updateCardArray',
-                {"cardsArray": cardsArray }
+                { "cardsArray": cardsArray }
             )
         } catch (error) {
             console.error(error.message)
@@ -44,7 +45,6 @@ const CardArray = () => {
 
         if (active.id !== over.id) {
             setCardsArray((items) => {
-                // מוצאים את האינדקסים הישנים והחדשים בהתבסס על מזהים ייחודיים
                 const oldIndex = items.findIndex(item => item.id === active.id);
                 const newIndex = items.findIndex(item => item.id === over.id);
 
@@ -64,10 +64,12 @@ const CardArray = () => {
                     onDragEnd={handleDragEnd}
                     collisionDetection={closestCorners} >
                     <SortableContext items={cardsArray} strategy={rectSortingStrategy}>
+
                         {cardsArray.map((card) => {
                             return <Card card={card} key={card.id}> </Card>
                         })}
                         <AddCard />
+
                     </SortableContext>
                 </DndContext>
 

@@ -7,7 +7,7 @@ import { IconButton } from '@mui/material';
 import { IoTrash } from "react-icons/io5";
 
 
-const DeleteCad = () => {
+const DeleteCard = () => {
 
   const currentCard = useContext(CardContext);
   const setColorArray = useContext(SetArraycardsContext);
@@ -35,4 +35,4 @@ const DeleteCad = () => {
   )
 }
 
-export default DeleteCad
+export default DeleteCard
