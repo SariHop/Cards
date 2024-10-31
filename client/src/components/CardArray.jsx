@@ -39,17 +39,15 @@ const CardArray = () => {
         fetchcards()
     }, [])
 
-    // const fetupdateCardsArray = async () => {
-    //     try {
-    //         await axios.put('http://localhost:8080/cards/updateCardArray',
-    //             {"cardsArray": cardsArray }
-    //         )
-    //     } catch (error) {
-    //         console.error(error.message)
-    //     }
-    // }
-    // fetupdateCardsArray()
-
+    const fetupdateCardsArray = async (cardsArray) => {
+        try {
+            await axios.put('http://localhost:8080/cards/updateCardArray',
+                {"cardsArray": cardsArray }
+            )
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
 
     function handleDragEnd(event) {
         const { active, over } = event;
@@ -60,8 +58,9 @@ const CardArray = () => {
                 const oldIndex = items.findIndex(item => item.id === active.id);
                 const newIndex = items.findIndex(item => item.id === over.id);
 
-                // מחזירים את המערך המעודכן לפי המיקום החדש
-                return arrayMove(items, oldIndex, newIndex);
+                const updatedArrayCards = arrayMove(items, oldIndex, newIndex);
+                fetupdateCardsArray(updatedArrayCards)
+                return updatedArrayCards
             });
         }
     }

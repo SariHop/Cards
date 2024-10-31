@@ -99,9 +99,7 @@ app.put('/cards/updateText/:id', (req, res) => {
 
 app.put('/cards/updateCardArray', (req, res) => {
     try {
-       
         cardsArray = req.body.cardsArray
-        console.log(cardsArray)
         res.status(200).json({ message: 'sucsses' });
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error' })
