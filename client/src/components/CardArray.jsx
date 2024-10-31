@@ -3,18 +3,8 @@ import { useEffect, useState, createContext } from 'react'
 import axios from 'axios'
 import Card from './Card'
 import AddCard from './API components/AddCard'
-import {
-    useSensors,
-    useSensor,
-    closestCorners,
-    DndContext,
-    TouchSensor
-} from '@dnd-kit/core'
-import {
-    arrayMove,
-    SortableContext,
-    rectSortingStrategy,
-} from '@dnd-kit/sortable';
+import {useSensors,useSensor,closestCorners,DndContext,} from '@dnd-kit/core'
+import {arrayMove,SortableContext, rectSortingStrategy,} from '@dnd-kit/sortable';
 import MySensor from './MyPointerSensor'
 
 export const SetArraycardsContext = createContext()

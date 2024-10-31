@@ -3,10 +3,12 @@ import { useState, useContext } from 'react'
 import axios from 'axios';
 import { CardContext } from '../Card';
 import {StyledInput} from '../customComponents/textUpdateCustom'
+import { SetArraycardsContext } from '../CardArray'
 
 const UpdateText = () => {
 
     const currentCard = useContext(CardContext);
+    const setCardsArray = useContext(SetArraycardsContext);
     const [textValueInput, setTextValueinpt] = useState(currentCard.text)
 
     const fetchUpdateText = async () => {
@@ -18,14 +20,19 @@ const UpdateText = () => {
         }
     }
 
-    // בדיקה כשהקומפוננטה נופלת האם צריך לבצע קריאת שרת
+    const handleClick = () => {
+        fetchUpdateText()
+        setCardsArray(prevArray => prevArray.map(card =>
+            card === currentCard ? { ...card, color: textValueInput } : card
+        ));
+    }
 
     return (
         <div>
             <StyledInput
                 value={textValueInput}
                 onChange={(e) => { setTextValueinpt(e.target.value) }}
-                onBlur={fetchUpdateText}>
+                onBlur={handleClick}>
             </StyledInput>
         </div>
     )
