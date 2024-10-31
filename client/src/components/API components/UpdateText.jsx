@@ -23,7 +23,7 @@ const UpdateText = () => {
     const handleClick = () => {
         fetchUpdateText()
         setCardsArray(prevArray => prevArray.map(card =>
-            card === currentCard ? { ...card, color: textValueInput } : card
+            card === currentCard ? { ...card, text: textValueInput } : card
         ));
     }
 
