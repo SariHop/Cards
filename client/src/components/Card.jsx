@@ -33,7 +33,7 @@ const Card = ({ card }) => {
 
   return (
     <CardContext.Provider value={card}>
-      {/* <div ref={setNodeRef} {...listeners} {...attributes} style={style}> */}
+      <div ref={setNodeRef} {...listeners} {...attributes} style={style}>
 
         <CardContainer style={{ backgroundColor: card.color }}>
 
@@ -59,7 +59,7 @@ const Card = ({ card }) => {
           </CardFooter>
         </CardContainer>
 
-      {/* </div> */}
+      </div>
     </CardContext.Provider>
   );
 };

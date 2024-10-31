@@ -8,7 +8,6 @@ import {
     useSensor,
     closestCorners,
     DndContext,
-    PointerSensor,
     TouchSensor
 } from '@dnd-kit/core'
 import {
@@ -16,14 +15,16 @@ import {
     SortableContext,
     rectSortingStrategy,
 } from '@dnd-kit/sortable';
+import MyPointerSensor from './MyPointerSensor'
+
 export const SetArraycardsContext = createContext()
 
 const CardArray = () => {
 
     const [cardsArray, setCardsArray] = useState([])
     const sensors = useSensors(
-        useSensor(PointerSensor),
-         useSensor(TouchSensor)
+        useSensor(MyPointerSensor),
+        useSensor(TouchSensor)
     );
 
     useEffect(() => {
@@ -37,8 +38,19 @@ const CardArray = () => {
             }
         }
         fetchcards()
-
     }, [])
+
+    // const fetupdateCardsArray = async () => {
+    //     try {
+    //         await axios.put('http://localhost:8080/cards/updateCardArray',
+    //             {"cardsArray": cardsArray }
+    //         )
+    //     } catch (error) {
+    //         console.error(error.message)
+    //     }
+    // }
+    // fetupdateCardsArray()
+
 
     function handleDragEnd(event) {
         const { active, over } = event;
