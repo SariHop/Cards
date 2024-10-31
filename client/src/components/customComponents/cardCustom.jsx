@@ -9,6 +9,7 @@ export const CardContainer = styled(Grid)({
     borderRadius: '4px',
     display: 'flex',
     flexDirection: 'column',
+    touchAction: 'none'
 });
 
 export const CardContent = styled('div')({
